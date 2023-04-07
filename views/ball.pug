@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{ball_type:"cricket_ball", ball_size:100, ball_cost:250}, {ball_type:"basket_ball", ball_size:200, ball_cost:2000}, {ball_type:"base_ball", ball_size:150, ball_cost:2300}];
+
+
+  div(class = "container-fluid")
+    div(class = "row")
+      each b,index in results 
+        div(class = "col-sm-2" onclick = `buy(${index})`) Type: #{b.ball_type} <br/> Size: #{b.ball_size} <br/> Cost: #{b.ball_cost}
+
+  script.
+    function buy(x)
+    { 
+        alert(`You purchased item ${x}`)
+    }
