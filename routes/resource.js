@@ -15,7 +15,7 @@ router.post('/balls', ball_controller.ball_create_post);
 // PUT request to update Ball.
 //router.put('/balls/:id', ball_controller.ball_update_put);
 // GET request for one Ball.
-//router.get('/balls/:id', ball_controller.ball_detail);
+router.get('/balls/:id', ball_controller.ball_detail);
 // GET request for list of all Ball items.
 router.get('/balls', ball_controller.ball_list);
 module.exports = router;

@@ -4,8 +4,7 @@ exports.ball_list = async function (req, res) {
     try{
     theballs = await ball.find();
     console.log(theballs);
-    res.send(theballs);
-
+    res.send(String(theballs));
 
     }
     catch(err){
@@ -15,8 +14,21 @@ exports.ball_list = async function (req, res) {
    };
 
 
+   // for a specific Ball.
+exports.ball_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await ball.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    };
+    
+
 // // for a specific ball.
-// exports.ball_detail = function(req, res) {
+//exports.ball_detail = function(req, res) {
 //  res.send('NOT IMPLEMENTED: shoe detail: ' + req.params.id);
 // };
 // // Handle ball create on POST.
