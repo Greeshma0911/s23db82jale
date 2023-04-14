@@ -12,8 +12,8 @@ router.get('/', api_controller.api);
 router.post('/balls', ball_controller.ball_create_post);
 // DELETE request to delete Ball.
 //router.delete('/balls/:id', ball_controller.ball_delete);
-// PUT request to update Ball.
-//router.put('/balls/:id', ball_controller.ball_update_put);
+//PUT request to update Ball.
+router.put('/balls/:id', ball_controller.ball_update_put);
 // GET request for one Ball.
 router.get('/balls/:id', ball_controller.ball_detail);
 // GET request for list of all Ball items.
