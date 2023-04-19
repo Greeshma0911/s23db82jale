@@ -7,12 +7,12 @@ var ball_controller = require('../controllers/ball');
 // GET resources base.
 router.get('/', api_controller.api);
 /// BALL ROUTES ///
-//POST request for creating a Ball.
+// POST request for creating a Ball.
 
 router.post('/balls', ball_controller.ball_create_post);
 // DELETE request to delete Ball.
-//router.delete('/balls/:id', ball_controller.ball_delete);
-//PUT request to update Ball.
+router.delete('/balls/:id', ball_controller.ball_delete);
+// PUT request to update Ball.
 router.put('/balls/:id', ball_controller.ball_update_put);
 // GET request for one Ball.
 router.get('/balls/:id', ball_controller.ball_detail);

@@ -57,7 +57,7 @@ exports.ball_view_all_Page = async function(req, res) {
    };
 
   // Handle Costume update form on PUT.
-   exports.ball_update_put = async function(req, res) {
+exports.ball_update_put = async function(req, res) {
    console.log(`update on id ${req.params.id} with body
    ${JSON.stringify(req.body)}`)
    try {
@@ -76,7 +76,9 @@ exports.ball_view_all_Page = async function(req, res) {
    failed`);
    }
    };
-// Handle ball create on POST.
+
+
+    // Handle ball create on POST.
 exports.ball_create_post = async function(req, res) {
     console.log(req.body)
     let document = new ball();
@@ -96,3 +98,18 @@ exports.ball_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
    };
+
+
+   // Handle Ball delete on DELETE.
+exports.ball_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await ball.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    
