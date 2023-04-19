@@ -3,7 +3,6 @@ var ball = require('../models/ball');
 exports.ball_list = async function (req, res) {
     try{
     theballs = await ball.find();
-    console.log(theballs);
     res.send(String(theballs));
 
     }
@@ -100,7 +99,7 @@ exports.ball_create_post = async function(req, res) {
    };
 
 
-   // Handle Ball delete on DELETE.
+// Handle Ball delete on DELETE.
 exports.ball_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
@@ -110,6 +109,34 @@ exports.ball_delete = async function(req, res) {
     } catch (err) {
     res.status(500)
     res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    
+// Handle a show one view with id specified by query
+exports.ball_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await ball.findById( req.query.id)
+    res.render('balldetail',
+    { title: 'Ball Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+    // Handle building the view for creating a ball.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.ball_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('ballcreate', { title: 'Ball Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
     }
     };
     
