@@ -10,5 +10,10 @@ a {
 .ballAttr {
   background-color: aquamarine;
   width: 120px;
+  text-shadow: 2px 2px 5px rgb(217, 244, 109);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: medium;
   }
+
+ 
   
