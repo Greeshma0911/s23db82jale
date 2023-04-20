@@ -1,6 +1,9 @@
 extends layout
 block content
  h1= title
+ if (toShow == null)
+  h2 No instance to delete
+ else
  - let ballid = toShow._id
  - let ball_type = toShow.ball_type
  - let ball_size = toShow.ball_size
