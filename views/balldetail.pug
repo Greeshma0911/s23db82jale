@@ -4,20 +4,20 @@ block content
  if (toShow == null)
   h2 No instance to delete
  else
- - let ballid = toShow._id
- - let ball_type = toShow.ball_type
- - let ball_size = toShow.ball_size
- - let ball_cost = toShow.ball_cost
- div
-  div.row
+  - let ballid = toShow._id
+  - let ball_type = toShow.ball_type
+  - let ball_size = toShow.ball_size
+  - let ball_cost = toShow.ball_cost
+  div
+   div.row
     div(class='ballAttr mr-3') Ball ID is:
     div #{ballid}
-  div.row
+   div.row
     div(class='ballAttr mr-3') Ball Type is:
     div #{ball_type}
-  div.row
+   div.row
     div(class='ballAttr mr-3') Ball Size is:
     div #{ball_size}
-  div.row
+   div.row
     div(class='ballAttr mr-3') Ball Cost is:
     div #{ball_cost}

@@ -47,7 +47,7 @@ exports.ball_detail = async function(req, res) {
 exports.ball_view_all_Page = async function(req, res) {
     try{
     theballs = await ball.find();
-    res.render('ball', { title: 'ball Search Results', results: theballs });
+    res.render('ball', { title: 'Ball Search Results', results: theballs });
     }
     catch(err){
     res.status(500);

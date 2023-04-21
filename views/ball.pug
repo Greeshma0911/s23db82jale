@@ -2,16 +2,40 @@ extends layout
 
 block content
   h1= title
-  - var results = [{ball_type:"cricket_ball", ball_size:100, ball_cost:250}, {ball_type:"basket_ball", ball_size:200, ball_cost:2000}, {ball_type:"base_ball", ball_size:150, ball_cost:2300}];
-
-
-  div(class = "container-fluid")
-    div(class = "row")
-      each b,index in results 
-        div(class = "col-sm-2" onclick = `buy(${index})`) Type: #{b.ball_type} <br/> Size: #{b.ball_size} <br/> Cost: #{b.ball_cost}
-
+  - let ball=results
+  div(class="container-fluid")
+  div(class="row")
+   each b,index in ball
+    - let destination = `dispatch(\"/ball/update?id=${b._id}\")`
+    div(class="col-sm-2" class="m-1") #{b.ball_type}, #{b.ball_size}, #{b.ball_cost}
+     button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-    function buy(x)
-    { 
-        alert(`You purchased item ${x}`)
-    }
+   function dispatch(path){
+    window.location.href=path
+   }
+
+
+
+
+
+//- extends layout
+
+//- block content
+//-   h1= title
+//-   - var results = [{ball_type:"cricket_ball", ball_size:100, ball_cost:250}, {ball_type:"basket_ball", ball_size:200, ball_cost:2000}, {ball_type:"base_ball", ball_size:150, ball_cost:2300}];
+//-   - let ball = results
+
+//-   div(class = "container-fluid")
+//-    div(class = "row m-1")
+//-     each b,index in results 
+//-      - let destination = `dispatch(\"/ball/update?id=${b._id}\")`
+//-      - let d1 = `dispatch(\"/ball/detail?id=${b._id}\")`
+//-      - let d2 = `dispatch(\"/ball/delete?id=${b._id}\")`
+//-      div(class = "row-sm-2" class="m-1")#{b.ball_type}(#{ball_size})is#{ball_cost}
+//-       button.btn( class="btn-primary ml-1", onclick= destination) Update
+//-       button.btn( class="btn-primary ml-1", onclick= d1) View
+//-       button.btn( class="btn-primary ml-1", onclick= d2) Delete
+//-   script.
+//-     function dispatch(path){
+//-      window.location.href=path
+//-   }
