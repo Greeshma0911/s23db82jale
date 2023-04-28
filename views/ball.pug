@@ -3,13 +3,22 @@ extends layout
 block content
   h1= title
   - let ball=results
+  - let c=`dispatch(\"/ball/create\")`
+  button.btn( class="btn-primary", onclick= c) Create
   div(class="container-fluid")
   div(class="row")
    each b,index in ball
     - let destination = `dispatch(\"/ball/update?id=${b._id}\")`
-    div(class="col-sm-2" class="m-1") #{b.ball_type}, #{b.ball_size}, #{b.ball_cost}
+    - let d1 = `dispatch(\"/ball/detail?id=${b._id}\")`
+    - let d2 = `dispatch(\"/ball/delete?id=${b._id}\")`
+    div(class="col-sm-2" class="m-1") 
+     div(class="row") #{b.ball_type}, #{b.ball_size}, #{b.ball_cost}
      button.btn( class="btn-primary ml-1", onclick= destination) Update
+     button.btn( class="btn-primary ml-1", onclick= d1) View
+     button.btn( class="btn-primary ml-1", onclick= d2) Delete 
+  
   script.
    function dispatch(path){
     window.location.href=path
    }
+

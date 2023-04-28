@@ -37,14 +37,23 @@ message: 'Registration error', account : req.body.username })
 })
 });
 
+// // A little function to check if we have an authorized user and continue on
+
+// // redirect to login.
+// const secured = (req, res, next) => {
+// if (req.user){
+// return next();
+// }
+// req.session.returnTo = req.originalUrl;
+// res.redirect("/login");
+// }
+
 router.get('/login', function(req, res) {
     res.render('login', { title: 'Ball App Login', user : req.user });
     });
     router.post('/login', passport.authenticate('local'), function(req, res) {
-    if(req.session.toReturn){
-    console.log("Send it back to " + req.session.toReturn)
-    res.redirect(req.session.toReturn);
-    }
+    if(req.session.returnTo)
+    res.redirect(req.session.returnTo);
     res.redirect('/');
     });
     router.get('/logout', function(req, res) {
